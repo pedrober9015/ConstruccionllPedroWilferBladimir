@@ -49,7 +49,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * Helper to map your domain user to a Spring Security UserDetails.
      * Adapt field names to match your entity.
      */
-    private UserDetails buildUserDetails(
+    @SuppressWarnings("unused")
+private UserDetails buildUserDetails(
             String username,
             String encodedPassword,
             List<String> roles
