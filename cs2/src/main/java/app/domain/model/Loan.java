@@ -68,7 +68,7 @@ public class Loan {
     public void markAsDefaulted() { this.status = LoanStatus.DEFAULTED; }
 
     public String getLoanId() { return loanId; }
-    public void setLoanId(String loanId) { this.loanId = loanId; }
+    public void setLoanId(String id) { this.loanId = id; }
 
     public Customer getCustomer() { return customer; }
     public void setCustomer(Customer customer) { this.customer = customer; }
@@ -89,7 +89,7 @@ public class Loan {
     public void setRemainingBalance(double remainingBalance) { this.remainingBalance = remainingBalance; }
 
     public LoanStatus getStatus() { return status; }
-    public void setStatus(LoanStatus status) { this.status = status; }
+    public void setStatus(String status) { this.status = status; }
 
     public LocalDate getStartDate() { return startDate; }
     public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
@@ -109,5 +109,20 @@ public class Loan {
                 + ", interestRate=" + interestRate + "%, termMonths=" + termMonths
                 + ", monthlyPayment=" + String.format("%.2f", monthlyPayment)
                 + ", remainingBalance=" + remainingBalance + ", status=" + status + "}";
+    }
+
+    public Double getBalanceDue() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getBalanceDue'");
+    }
+
+    public void setBalanceDue(double d) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setBalanceDue'");
+    }
+
+    public void setLoanId(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setLoanId'");
     }
 }

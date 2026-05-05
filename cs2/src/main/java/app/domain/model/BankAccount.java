@@ -93,4 +93,9 @@ public class BankAccount {
         return "BankAccount{accountNumber='" + accountNumber + "', type=" + accountType
                 + ", balance=" + balance + " " + currency + ", status=" + status + "}";
     }
+
+    public void setId(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
 }

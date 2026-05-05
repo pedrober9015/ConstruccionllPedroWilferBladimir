@@ -1,6 +1,7 @@
 package app.domain.ports;
 
 import java.util.List;
+import java.util.Optional;
 
 import app.domain.model.Customer;
 
@@ -11,7 +12,10 @@ public interface CustomerPort {
     //exists
     public boolean existisByDocument(String identification);
     //operation
-    public void save(Customer customer);
+    public Customer save(Customer customer);
     public void update(Customer customer);
     public void deleteByDocument(String identification);
+    public Optional<Customer> findById(Long id);
+    public void delete(Long id);
+    public List<Customer> findById(String type);
 }
