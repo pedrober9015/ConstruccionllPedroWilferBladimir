@@ -1,12 +1,11 @@
 package app.domain.model;
 
-import app.domain.model.enums.LoanStatus;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Loan {
+import app.domain.model.enums.LoanStatus;
 
+public class Loan {
     private String loanId;
     private Customer customer;
     private double principal;
@@ -89,7 +88,7 @@ public class Loan {
     public void setRemainingBalance(double remainingBalance) { this.remainingBalance = remainingBalance; }
 
     public LoanStatus getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public void setStatus(LoanStatus status) { this.status = status; }
 
     public LocalDate getStartDate() { return startDate; }
     public void setStartDate(LocalDate startDate) { this.startDate = startDate; }

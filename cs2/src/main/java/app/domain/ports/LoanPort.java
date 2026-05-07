@@ -8,7 +8,7 @@ import app.domain.model.Loan;
 
 public interface LoanPort {
     //find
-    public Optional<Loan> findById(Long id);
+    public Optional<Loan> findById1(Long id);
     public List<Loan> findByCustomer(Customer customer);
     //exists
     public boolean existsById(String id);
@@ -18,4 +18,5 @@ public interface LoanPort {
     public List<Loan> findAll();
     public Optional<Loan> findById(Long id);
     public List<Loan> findByStatus(String status);
+    public void delete(Long id);
 }

@@ -14,7 +14,7 @@ public interface UserPort {
     public List<User> findAll();
 
 
-    public void save(User user);
+    public User save(User user);
     public void update(User user);
     public void deleteByDocument(String identification);
 }
