@@ -1,4 +1,4 @@
-package adapter.in.controllers;
+package app.adapter.in.controllers;
 
 import app.domain.model.User;
 import app.domain.model.enums.EstatUser;

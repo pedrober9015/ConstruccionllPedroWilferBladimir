@@ -1,4 +1,4 @@
-package adapter.in.controllers;
+package app.adapter.in.controllers;
 import app.domain.model.BankAccount;
 import app.domain.ports.BankAccountPort;
 import lombok.RequiredArgsConstructor;

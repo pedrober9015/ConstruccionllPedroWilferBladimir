@@ -1,4 +1,4 @@
-package adapter.in.controllers;
+package app.adapter.in.controllers;
 
 import java.util.ArrayList;
 

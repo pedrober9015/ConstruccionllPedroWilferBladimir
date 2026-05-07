@@ -1,4 +1,4 @@
-package adapter.in.controllers;
+package app.adapter.in.controllers;
 import app.domain.model.Customer;
 import app.domain.ports.CustomerPort;
 import lombok.RequiredArgsConstructor;
