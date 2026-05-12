@@ -1,4 +1,4 @@
-package app.domain.Services;
+package app.domain.services;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

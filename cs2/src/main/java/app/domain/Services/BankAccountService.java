@@ -1,4 +1,4 @@
-package app.domain.Services;
+package app.domain.services;
 
 import app.domain.model.BankAccount;
 import app.domain.model.Customer;
