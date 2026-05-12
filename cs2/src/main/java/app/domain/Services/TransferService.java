@@ -1,4 +1,4 @@
-package app.domain.Services;
+package app.domain.services;
 import java.util.List;
 
 import app.domain.model.Customer;
@@ -16,7 +16,7 @@ public class TransferService {
 
  
     public boolean existsById(String id) {
-        return transferPort.existisById(id);
+        return transferPort.existsById(id);
     }
 
 

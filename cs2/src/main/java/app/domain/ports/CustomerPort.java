@@ -10,7 +10,7 @@ public interface CustomerPort {
     public Customer findByDocument(String identification);
     public List<Customer> findAll();
     //exists
-    public boolean existisByDocument(String identification);
+    public boolean existsByDocument(String identification);
     //operation
     public Customer save(Customer customer);
     public void update(Customer customer);

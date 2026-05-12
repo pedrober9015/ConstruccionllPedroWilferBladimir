@@ -1,4 +1,4 @@
-package app.domain.Services;
+package app.domain.services;
 import java.util.List;
 
 import app.domain.model.User;
@@ -14,11 +14,11 @@ public class UserService {
     }
 
     public boolean existsByDocument(String identification) {
-        return userPort.existisByDocument(identification);
+        return userPort.existsByDocument(identification);
     }
 
     public boolean existsByUserName(String userName) {
-        return userPort.existisByUserName(userName);
+        return userPort.existsByUserName(userName);
     }
 
     public boolean existsByEmail(String email) {
