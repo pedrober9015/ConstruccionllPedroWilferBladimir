@@ -54,7 +54,7 @@ public class BankAccountUseCases {
         return bankAccountService.canWithdraw(account, amount);
     }
 
-    // INFORMACIÓN DE LA CUENTA
+    // INFORMACION DE LA CUENTA
     public String getAccountInfo(BankAccount account) {
         return bankAccountService.getAccountInfo(account);
     }

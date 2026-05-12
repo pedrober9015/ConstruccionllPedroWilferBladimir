@@ -43,7 +43,7 @@ public class CustomerUseCases {
         return customerService.getAccounts(customerId);
     }
 
-    // OBTENER PRÉSTAMOS DEL CLIENTE
+    // OBTENER PRESTAMOS DEL CLIENTE
     public List<Loan> getLoans(String customerId) {
         return customerService.getLoans(customerId);
     }

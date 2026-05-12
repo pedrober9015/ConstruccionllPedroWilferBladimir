@@ -1,8 +1,7 @@
-package app.domain.services;
+package app.domain.Services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import app.domain.model.BankAccount;
 import app.domain.model.Customer;
 import app.domain.model.Loan;
@@ -85,7 +84,7 @@ public class CustomerService implements CustomerPort {
     }
 
     @Override
-    public boolean existisByDocument(String identification) {
+    public boolean existsByDocument(String identification) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'existisByDocument'");
     }

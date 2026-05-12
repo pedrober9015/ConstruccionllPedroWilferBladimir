@@ -13,7 +13,7 @@ public class LoanUseCases {
     public LoanUseCases(LoanService loanService) {
         this.loanService = loanService;
     }
-    // CREAR PRÉSTAMO
+    // CREAR PRESTAMO
     public Loan createLoan(Customer customer,
                            double principal,
                            double interestRate,
@@ -31,17 +31,17 @@ public class LoanUseCases {
         );
     }
 
-    // APROBAR PRÉSTAMO
+    // APROBAR PRESTAMO
     public void approveLoan(String loanId) {
         loanService.approveLoan(loanId);
     }
 
-    // ACTIVAR PRÉSTAMO
+    // ACTIVAR PRESTAMO
     public void activateLoan(String loanId) {
         loanService.activateLoan(loanId);
     }
 
-    // RECHAZAR PRÉSTAMO
+    // RECHAZAR PRESTAMO
     public void rejectLoan(String loanId) {
         loanService.rejectLoan(loanId);
     }
@@ -56,12 +56,12 @@ public class LoanUseCases {
         loanService.makePayment(loanId, amount);
     }
 
-    // OBTENER TODOS LOS PRÉSTAMOS
+    // OBTENER TODOS LOS PRESTAMOS
     public List<Loan> findAllLoans() {
         return loanService.getAllLoans();
     }
 
-    // BUSCAR PRÉSTAMOS POR CLIENTE
+    // BUSCAR PRESTAMOS POR CLIENTE
     public List<Loan> findLoansByCustomer(Customer customer) {
         return loanService.findByCustomer(customer);
     }

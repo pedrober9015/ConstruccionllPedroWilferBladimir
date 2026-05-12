@@ -51,7 +51,7 @@ public class UserUseCases {
         return userService.existsByUserName(userName);
     }
 
-    // VERIFICAR SI EXISTE EL CORREO ELECTRÓNICO
+    // VERIFICAR SI EXISTE EL CORREO ELECTRONICO
     public boolean existsByEmail(String email) {
         return userService.existsByEmail(email);
     }

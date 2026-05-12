@@ -1,4 +1,4 @@
-package app.domain.services;
+package app.domain.Services;
 import java.util.List;
 
 import app.domain.model.User;
