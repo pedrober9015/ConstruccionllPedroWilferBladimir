@@ -17,5 +17,5 @@ public interface CustomerPort {
     public void deleteByDocument(String identification);
     public Optional<Customer> findById(Long id);
     public void delete(Long id);
-    public List<Customer> findById(String type);
+    public Optional<Customer> findById(String type);
 }

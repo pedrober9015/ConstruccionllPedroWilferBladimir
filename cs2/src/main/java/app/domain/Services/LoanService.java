@@ -1,12 +1,12 @@
 package app.domain.Services;
-import app.domain.model.Loan;
-import app.domain.model.Customer;
-import app.domain.model.enums.LoanStatus;
-import app.domain.ports.LoanPort;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import app.domain.model.Customer;
+import app.domain.model.Loan;
+import app.domain.ports.LoanPort;
 
 public class LoanService implements LoanPort {
 
@@ -86,5 +86,53 @@ public class LoanService implements LoanPort {
     private Loan getLoanOrThrow(String loanId) {
         return findById(loanId)
                 .orElseThrow(() -> new RuntimeException("Loan not found"));
+    }
+
+    @Override
+    public Optional<Loan> findById1(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById1'");
+    }
+
+    @Override
+    public boolean existsById(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'existsById'");
+    }
+
+    @Override
+    public Loan save(Loan loan) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
+
+    @Override
+    public void update(Loan loan) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    @Override
+    public List<Loan> findAll() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
+
+    @Override
+    public Optional<Loan> findById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    @Override
+    public List<Loan> findByStatus(String status) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByStatus'");
+    }
+
+    @Override
+    public void delete(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 }

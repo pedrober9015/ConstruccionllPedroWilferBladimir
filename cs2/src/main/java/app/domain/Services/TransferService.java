@@ -16,7 +16,7 @@ public class TransferService {
 
  
     public boolean existsById(String id) {
-        return transferPort.existsById(id);
+        return transferPort.existisById(id);
     }
 
 

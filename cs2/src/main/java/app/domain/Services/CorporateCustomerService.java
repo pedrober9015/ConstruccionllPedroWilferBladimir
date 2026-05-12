@@ -1,10 +1,11 @@
 package app.domain.Services;
-import app.domain.model.CorporateCustomer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CorporateCustomerService implements CorporateCustomer{
+import app.domain.model.CorporateCustomer;
+
+public class CorporateCustomerService extends CorporateCustomer{
 
     private final List<CorporateCustomer> corporateCustomers = new ArrayList<>();
 

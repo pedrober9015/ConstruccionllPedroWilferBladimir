@@ -1,5 +1,6 @@
 package app.domain.Services;
 import java.util.List;
+
 import app.domain.model.User;
 import app.domain.ports.UserPort;
 
@@ -13,11 +14,11 @@ public class UserService {
     }
 
     public boolean existsByDocument(String identification) {
-        return userPort.existsByDocument(identification);
+        return userPort.existisByDocument(identification);
     }
 
     public boolean existsByUserName(String userName) {
-        return userPort.existsByUserName(userName);
+        return userPort.existisByUserName(userName);
     }
 
     public boolean existsByEmail(String email) {
