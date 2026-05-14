@@ -118,4 +118,9 @@ public class CorporateCustomerEntity extends PersonEntity {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setBirthDate'");
     }
+
+    public void setAddress(String address) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAddress'");
+    }
 }

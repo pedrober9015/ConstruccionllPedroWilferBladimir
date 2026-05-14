@@ -2,6 +2,8 @@ package app.domain.model;
 
 import java.time.LocalDate;
 
+import app.infrastructure.Persistence.entities.CorporateCustomerEntity;
+
 public class CorporateCustomer extends Customer {
 
     private String taxId;
@@ -52,5 +54,10 @@ public class CorporateCustomer extends Customer {
     public String toString() {
         return "CorporateCustomer{taxId='" + taxId + "', companyName='" + companyName
                 + "', businessSector='" + businessSector + "', " + super.toString() + "}";
+    }
+
+    public void setAddress(Class<? extends CorporateCustomerEntity> class1) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAddress'");
     }
 }

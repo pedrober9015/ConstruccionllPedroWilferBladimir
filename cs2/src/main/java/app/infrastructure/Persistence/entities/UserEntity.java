@@ -1,4 +1,4 @@
-package app.infrastructure.persistence.entity;
+package app.infrastructure.Persistence.entities;
 
 import app.domain.model.enums.EstatUser;
 import app.domain.model.enums.RoleSystem;
@@ -13,7 +13,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    private int iduser;
+    private String  iduser;
 
     @Column(name = "id_relation")
     private int idrelation;
@@ -49,8 +49,8 @@ public class UserEntity {
 
     public UserEntity() {}
 
-    public int getIduser() { return iduser; }
-    public void setIduser(int iduser) { this.iduser = iduser; }
+    public  String getIduser() { return iduser; }
+    public void setIduser(String iduser) { this.iduser = iduser; }
 
     public int getIdrelation() { return idrelation; }
     public void setIdrelation(int idrelation) { this.idrelation = idrelation; }

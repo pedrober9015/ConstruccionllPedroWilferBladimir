@@ -1,8 +1,8 @@
-package app.infrastructure.persistence.mapper;
+package app.infrastructure.Persistence.mapper;
 
 import app.domain.model.Transfer;
 import app.infrastructure.Persistence.entities.BankAccountEntity;
-import app.infrastructure.persistence.entity.TransferEntity;
+import app.infrastructure.Persistence.entities.TransferEntity;
 
 import java.util.ArrayList;
 import java.util.List;

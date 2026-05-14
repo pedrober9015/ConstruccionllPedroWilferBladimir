@@ -1,7 +1,6 @@
-package app.infrastructure.persistence.entity;
+package app.infrastructure.Persistence.entities;
 
 import app.domain.model.enums.TransferStatus;
-import app.infrastructure.Persistence.entities.BankAccountEntity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

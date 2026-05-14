@@ -1,13 +1,10 @@
-package app.infrastructure.persistence.mapper;
+package app.infrastructure.Persistence.mapper;
 
 import app.domain.model.PersonCustomer;
-import app.infrastructure.persistence.entity.BankAccountEntity;
-import app.infrastructure.persistence.entity.LoanEntity;
-import app.infrastructure.persistence.entity.PersonCustomerEntity;
+import app.infrastructure.Persistence.entities.PersonCustomerEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Mapper de infraestructura entre el objeto de dominio {@link PersonCustomer}
@@ -26,7 +23,7 @@ public class PersonCustomerEntityMapper {
      * @param entity entidad JPA; si es null retorna null
      * @return objeto de dominio completamente poblado
      */
-    public static PersonCustomer toDomain(PersonCustomerEntity entity) {
+    public static PersonCustomer toDomain(PersonCustomer entity) {
         if (entity == null) return null;
 
         PersonCustomer domain = new PersonCustomer();
@@ -134,8 +131,6 @@ public class PersonCustomerEntityMapper {
      */
     public static List<PersonCustomer> toDomainList(List<PersonCustomerEntity> entities) {
         if (entities == null) return new ArrayList<>();
-        return entities.stream()
-                .map(PersonCustomerEntityMapper::toDomain)
-                .collect(Collectors.toList());
+        return null;
     }
 }
