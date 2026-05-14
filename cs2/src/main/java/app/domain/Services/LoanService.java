@@ -1,17 +1,21 @@
 package app.domain.Services;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import app.domain.model.Customer;
 import app.domain.model.Loan;
 import app.domain.ports.LoanPort;
 
-public class LoanService implements LoanPort {
+public class LoanService {
 
-    private final List<Loan> loans = new ArrayList<>();
+    private final LoanPort loanPort;
 
+    public LoanService(LoanPort loanPort) {
+        this.loanPort = loanPort;
+    }
+
+    // CREAR PRÉSTAMO
     public Loan createLoan(Customer customer,
                            double principal,
                            double interestRate,
@@ -28,111 +32,86 @@ public class LoanService implements LoanPort {
                 purpose
         );
 
-        loans.add(loan);
-        return loan;
+        return loanPort.save(loan);
     }
 
-    public Optional<Loan> findById(String loanId) {
-        for (Loan loan : loans) {
-            if (loan.getLoanId().equals(loanId)) {
-                return Optional.of(loan);
-            }
-        }
-        return Optional.empty();
+    // BUSCAR PRÉSTAMO POR ID
+    public Optional<Loan> findById(String id) {
+        return loanPort.findById(id);
     }
 
+    // BUSCAR PRÉSTAMOS POR CLIENTE
     public List<Loan> findByCustomer(Customer customer) {
-        List<Loan> result = new ArrayList<>();
-
-        for (Loan loan : loans) {
-            if (loan.getCustomer() != null &&
-                loan.getCustomer().equals(customer)) {
-                result.add(loan);
-            }
-        }
-
-        return result;
+        return loanPort.findByCustomer(customer);
     }
 
-    public void approveLoan(String loanId) {
-        Loan loan = getLoanOrThrow(loanId);
+    // APROBAR PRÉSTAMO
+    public void approveLoan(String id) {
+
+        Loan loan = loanPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
+
         loan.approve();
+
+        loanPort.update(loan);
     }
 
-    public void activateLoan(String loanId) {
-        Loan loan = getLoanOrThrow(loanId);
+    // ACTIVAR PRÉSTAMO
+    public void activateLoan(String id) {
+
+        Loan loan = loanPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
+
         loan.activate();
+
+        loanPort.update(loan);
     }
 
-    public void rejectLoan(String loanId) {
-        Loan loan = getLoanOrThrow(loanId);
+    // RECHAZAR PRÉSTAMO
+    public void rejectLoan(String id) {
+
+        Loan loan = loanPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
+
         loan.reject();
+
+        loanPort.update(loan);
     }
 
-    public void markAsDefaulted(String loanId) {
-        Loan loan = getLoanOrThrow(loanId);
+    // MARCAR PRÉSTAMO COMO MOROSO
+    public void markAsDefaulted(String id) {
+
+        Loan loan = loanPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
+
         loan.markAsDefaulted();
+
+        loanPort.update(loan);
     }
 
-    public void makePayment(String loanId, double amount) {
-        Loan loan = getLoanOrThrow(loanId);
+    // REALIZAR PAGO
+    public void makePayment(String id, double amount) {
+
+        Loan loan = loanPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
+
         loan.makePayment(amount);
+
+        loanPort.update(loan);
     }
 
+    // OBTENER TODOS LOS PRÉSTAMOS
     public List<Loan> getAllLoans() {
-        return new ArrayList<>(loans);
+        return loanPort.findAll();
     }
 
-    private Loan getLoanOrThrow(String loanId) {
-        return findById(loanId)
-                .orElseThrow(() -> new RuntimeException("Loan not found"));
-    }
-
-    @Override
-    public Optional<Loan> findById1(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById1'");
-    }
-
-    @Override
-    public boolean existsById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existsById'");
-    }
-
-    @Override
-    public Loan save(Loan loan) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
-
-    @Override
-    public void update(Loan loan) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
-    public List<Loan> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
-
-    @Override
-    public Optional<Loan> findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    @Override
+    // BUSCAR PRÉSTAMOS POR ESTADO
     public List<Loan> findByStatus(String status) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByStatus'");
+        return loanPort.findByStatus(status);
     }
 
-    @Override
-    public void delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    // ELIMINAR PRÉSTAMO
+    public void deleteLoan(String id) {
+        loanPort.delete(id);
     }
 }

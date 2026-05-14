@@ -1,5 +1,5 @@
 package app.domain.Services;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 import app.domain.model.BankAccount;
@@ -7,116 +7,94 @@ import app.domain.model.Customer;
 import app.domain.model.Loan;
 import app.domain.ports.CustomerPort;
 
-public class CustomerService implements CustomerPort {
+public class CustomerService {
 
-    private final List<Customer> customers = new ArrayList<>();
+    private final CustomerPort customerPort;
 
+    public CustomerService(CustomerPort customerPort) {
+        this.customerPort = customerPort;
+    }
+
+    // REGISTRAR CLIENTE
     public Customer registerCustomer(Customer customer) {
+
         if (customer == null) {
-            throw new RuntimeException("Customer cannot be null");
+            throw new RuntimeException("El cliente no puede ser nulo");
         }
 
-        customers.add(customer);
-        return customer;
+        return customerPort.save(customer);
     }
 
-    @Override
+    // BUSCAR CLIENTE POR ID
     public Optional<Customer> findById(String id) {
-        for (Customer customer : customers) {
-            if (customer.getId().equals(id)) {
-                return Optional.of(customer);
-            }
-        }
-        return Optional.empty();
+        return customerPort.findById(id);
     }
 
-    @Override
+    // OBTENER TODOS LOS CLIENTES
     public List<Customer> findAll() {
-        return new ArrayList<>(customers);
+        return customerPort.findAll();
     }
 
-    public void deactivateCustomer(String id) {
-        Customer customer = findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
-
-        customer.setActive(false);
-    }
-
+    // ACTIVAR CLIENTE
     public void activateCustomer(String id) {
-        Customer customer = findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        Customer customer = customerPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
         customer.setActive(true);
+
+        customerPort.update(customer);
     }
 
+    // DESACTIVAR CLIENTE
+    public void deactivateCustomer(String id) {
+
+        Customer customer = customerPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+
+        customer.setActive(false);
+
+        customerPort.update(customer);
+    }
+
+    // AGREGAR CUENTA AL CLIENTE
     public void addAccount(String customerId, BankAccount account) {
-        Customer customer = findById(customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        Customer customer = customerPort.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
         customer.addAccount(account);
+
+        customerPort.update(customer);
     }
 
+    // AGREGAR PRÉSTAMO AL CLIENTE
     public void addLoan(String customerId, Loan loan) {
-        Customer customer = findById(customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        Customer customer = customerPort.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
         customer.addLoan(loan);
+
+        customerPort.update(customer);
     }
 
+    // OBTENER CUENTAS DEL CLIENTE
     public List<BankAccount> getAccounts(String customerId) {
-        Customer customer = findById(customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        Customer customer = customerPort.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
         return customer.getAccounts();
     }
 
+    // OBTENER PRÉSTAMOS DEL CLIENTE
     public List<Loan> getLoans(String customerId) {
-        Customer customer = findById(customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        Customer customer = customerPort.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
 
         return customer.getLoans();
-    }
-
-    @Override
-    public Customer findByDocument(String identification) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByDocument'");
-    }
-
-    @Override
-    public boolean existsByDocument(String identification) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'existisByDocument'");
-    }
-
-    @Override
-    public Customer save(Customer customer) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
-
-    @Override
-    public void update(Customer customer) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
-    public void deleteByDocument(String identification) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteByDocument'");
-    }
-
-    @Override
-    public Optional<Customer> findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    @Override
-    public void delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 }
     

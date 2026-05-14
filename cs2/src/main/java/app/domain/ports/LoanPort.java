@@ -2,21 +2,32 @@ package app.domain.ports;
 
 import java.util.List;
 import java.util.Optional;
-
 import app.domain.model.Customer;
 import app.domain.model.Loan;
 
 public interface LoanPort {
-    //find
-    public Optional<Loan> findById1(Long id);
+
+    // BUSCAR PRÉSTAMO POR ID
+    public Optional<Loan> findById(String id);
+
+    // BUSCAR PRÉSTAMOS POR CLIENTE
     public List<Loan> findByCustomer(Customer customer);
-    //exists
-    public boolean existsById(String id);
-    //operation
-    public Loan save(Loan loan);
-    public void update(Loan loan);
-    public List<Loan> findAll();
-    public Optional<Loan> findById(Long id);
+
+    // BUSCAR PRÉSTAMOS POR ESTADO
     public List<Loan> findByStatus(String status);
-    public void delete(Long id);
+
+    // VERIFICAR SI EXISTE
+    public boolean existsById(String id);
+
+    // GUARDAR PRÉSTAMO
+    public Loan save(Loan loan);
+
+    // ACTUALIZAR PRÉSTAMO
+    public void update(Loan loan);
+
+    // ELIMINAR PRÉSTAMO
+    public void delete(String id);
+
+    // OBTENER TODOS LOS PRÉSTAMOS
+    public List<Loan> findAll();
 }
