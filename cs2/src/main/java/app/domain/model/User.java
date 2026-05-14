@@ -6,7 +6,7 @@ import app.domain.model.enums.EstatUser;
 import app.domain.model.enums.RoleSystem;
 
 public class User {
-private int iduser;
+private String iduser;
 private int idrelation;
 private String fullname;
 private String ididenfication;
@@ -14,12 +14,8 @@ private String email;
 private String telephone;
 private LocalDate datebirth;
 private String direction;
-private RoleSystem rolsystem;
-private EstatUser  estatUser;
-private String password;
 
-//constructor
-    public User(int iduser, int idrelation, String fullname, String ididenfication, String email, String telephone,
+public User(String iduser, int idrelation, String fullname, String ididenfication, String email, String telephone,
         LocalDate datebirth, String direction, RoleSystem rolsystem, EstatUser estatUser, String password) {
     this.iduser = iduser;
     this.idrelation = idrelation;
@@ -32,9 +28,12 @@ private String password;
     this.rolsystem = rolsystem;
     this.estatUser = estatUser;
     this.password = password;
-
-    
 }
+private RoleSystem rolsystem;
+private EstatUser  estatUser;
+private String password;
+
+
 //login 
 public boolean Login(String email, String password){
    return this.email.equals(email) && 
@@ -70,5 +69,41 @@ public void changeRole(RoleSystem newRole){
     }
     public EstatUser getEstatUser() {
         return estatUser;
+    }
+    public int getIdrelation() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getIdrelation'");
+    }
+    public String getFullname() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFullname'");
+    }
+    public String getIduser() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getIduser'");
+    }
+    public String getIdidenfication() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getIdidenfication'");
+    }
+    public String getEmail() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEmail'");
+    }
+    public String getTelephone() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTelephone'");
+    }
+    public LocalDate getDatebirth() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDatebirth'");
+    }
+    public String getDirection() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDirection'");
+    }
+    public String getPassword() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
     }
 }

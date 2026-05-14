@@ -1,11 +1,10 @@
-package app.infrastructure.persistence.mapper;
+package app.infrastructure.Persistence.mapper;
 
 import app.domain.model.Loan;
-import app.infrastructure.persistence.entity.LoanEntity;
+import app.infrastructure.Persistence.entities.LoanEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Mapper de infraestructura entre {@link Loan} y {@link LoanEntity}.
@@ -21,24 +20,24 @@ public class LoanEntityMapper {
      * El campo {@code customer} NO se resuelve aquí;
      * el repositorio de Loan lo asigna tras este mapeo.
      *
-     * @param entity entidad JPA; si es null retorna null
+     * @param loanEntity entidad JPA; si es null retorna null
      * @return objeto de dominio sin customer asignado
      */
-    public static Loan toDomain(LoanEntity entity) {
-        if (entity == null) return null;
+    public static Loan toDomain(Loan loanEntity) {
+        if (loanEntity == null) return null;
 
         Loan domain = new Loan();
-        domain.setLoanId(entity.getLoanId());
-        domain.setPrincipal(entity.getPrincipal());
-        domain.setInterestRate(entity.getInterestRate());
-        domain.setTermMonths(entity.getTermMonths());
-        domain.setMonthlyPayment(entity.getMonthlyPayment());
-        domain.setRemainingBalance(entity.getRemainingBalance());
-        domain.setStatus(entity.getStatus());
-        domain.setStartDate(entity.getStartDate());
-        domain.setEndDate(entity.getEndDate());
-        domain.setNextPaymentDate(entity.getNextPaymentDate());
-        domain.setPurpose(entity.getPurpose());
+        domain.setLoanId(loanEntity.getLoanId());
+        domain.setPrincipal(loanEntity.getPrincipal());
+        domain.setInterestRate(loanEntity.getInterestRate());
+        domain.setTermMonths(loanEntity.getTermMonths());
+        domain.setMonthlyPayment(loanEntity.getMonthlyPayment());
+        domain.setRemainingBalance(loanEntity.getRemainingBalance());
+        domain.setStatus(loanEntity.getStatus());
+        domain.setStartDate(loanEntity.getStartDate());
+        domain.setEndDate(loanEntity.getEndDate());
+        domain.setNextPaymentDate(loanEntity.getNextPaymentDate());
+        domain.setPurpose(loanEntity.getPurpose());
         // customer se resuelve en el repositorio
 
         return domain;
@@ -48,11 +47,11 @@ public class LoanEntityMapper {
      * Alias semántico de {@link #toDomain}. Llamado desde los mappers de Customer
      * para dejar explícita la intención de no resolver el customer (evitar ciclo).
      *
-     * @param entity entidad JPA; si es null retorna null
+     * @param loanEntity entidad JPA; si es null retorna null
      * @return objeto de dominio sin customer asignado
      */
-    public static Loan toDomainWithoutCustomer(LoanEntity entity) {
-        return toDomain(entity);
+    public static Loan toDomainWithoutCustomer(Loan loanEntity) {
+        return toDomain(loanEntity);
     }
 
     /**
@@ -118,8 +117,11 @@ public class LoanEntityMapper {
      */
     public static List<Loan> toDomainList(List<LoanEntity> entities) {
         if (entities == null) return new ArrayList<>();
-        return entities.stream()
-                .map(LoanEntityMapper::toDomain)
-                .collect(Collectors.toList());
+        return null;
+    }
+
+    public static Loan toDomainWithoutCustomer(LoanEntity loanEntity) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toDomainWithoutCustomer'");
     }
 }

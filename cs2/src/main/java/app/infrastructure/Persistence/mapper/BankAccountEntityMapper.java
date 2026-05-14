@@ -2,6 +2,7 @@ package app.infrastructure.Persistence.mapper;
 
 import app.domain.model.BankAccount;
 import app.infrastructure.Persistence.entities.BankAccountEntity;
+import app.infrastructure.Persistence.entities.TransferEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,12 @@ import java.util.stream.Collectors;
  *
  *   - {@link #toDomain(BankAccountEntity)}         → incluye la resolución del owner
  *                                                     (el repositorio debe inyectarlo después)
- *   - {@link #toDomainWithoutOwner(BankAccountEntity)} → usado internamente desde CustomerEntityMapper
+ *   - {@link #toDomainWithoutOwner1(BankAccountEntity)} → usado internamente desde CustomerEntityMapper
+ * - {@link #toDomainWithoutAccounts(t)}
  */
 public class BankAccountEntityMapper {
+
+    private static final TransferEntity TransferEntity = null;
 
     /**
      * Convierte una entidad JPA a objeto de dominio completo.
@@ -44,7 +48,7 @@ public class BankAccountEntityMapper {
         // Transferencias salientes
         if (entity.getTransfers() != null) {
             entity.getTransfers().forEach(t ->
-                    domain.addTransfer(TransferEntityMapper.toDomainWithoutAccounts(t)));
+                    domain.addTransfer(TransferEntityMapper.toDomainWithoutAccounts(TransferEntity)));
         }
 
         return domain;
@@ -55,21 +59,21 @@ public class BankAccountEntityMapper {
      * Se usa cuando el mapeo viene desde CustomerEntityMapper para evitar
      * el ciclo: Customer → BankAccount → Transfer → BankAccount.
      *
-     * @param entity entidad JPA; si es null retorna null
+     * @param accEntity entidad JPA; si es null retorna null
      * @return objeto de dominio sin owner ni transferencias
      */
-    public static BankAccount toDomainWithoutOwner(BankAccountEntity entity) {
-        if (entity == null) return null;
+    public static BankAccount toDomainWithoutOwner1(BankAccount accEntity) {
+        if (accEntity == null) return null;
 
         BankAccount domain = new BankAccount();
-        domain.setAccountNumber(entity.getAccountNumber());
-        domain.setAccountType(entity.getAccountType());
-        domain.setStatus(entity.getStatus());
-        domain.setBalance(entity.getBalance());
-        domain.setAvailableBalance(entity.getAvailableBalance());
-        domain.setCurrency(entity.getCurrency());
-        domain.setOpeningDate(entity.getOpeningDate());
-        domain.setLastTransactionDate(entity.getLastTransactionDate());
+        domain.setAccountNumber(accEntity.getAccountNumber());
+        domain.setAccountType(accEntity.getAccountType());
+        domain.setStatus(accEntity.getStatus());
+        domain.setBalance(accEntity.getBalance());
+        domain.setAvailableBalance(accEntity.getAvailableBalance());
+        domain.setCurrency(accEntity.getCurrency());
+        domain.setOpeningDate(accEntity.getOpeningDate());
+        domain.setLastTransactionDate(accEntity.getLastTransactionDate());
         // owner y transfers se omiten para romper el ciclo
 
         return domain;
@@ -133,5 +137,15 @@ public class BankAccountEntityMapper {
         return entities.stream()
                 .map(BankAccountEntityMapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    public static BankAccount toDomainWithoutOwner(BankAccount accEntity) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toDomainWithoutOwner'");
+    }
+
+    public static BankAccount toDomainWithoutOwner(BankAccountEntity accEntity) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toDomainWithoutOwner'");
     }
 }

@@ -1,4 +1,4 @@
-package app.infrastructure.persistence.entity;
+package app.infrastructure.Persistence.entities;
 
 import app.domain.model.enums.ProductType;
 import jakarta.persistence.*;

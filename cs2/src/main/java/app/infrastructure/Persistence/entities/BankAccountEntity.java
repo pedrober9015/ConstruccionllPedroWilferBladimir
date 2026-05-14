@@ -48,7 +48,7 @@ public class BankAccountEntity {
     private String ownerCustomerCode;
 
     @OneToMany(mappedBy = "sourceAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<TransferEntity> transfers = new ArrayList<>();
+    private List<Transfer> transfers = new ArrayList<>();
 
     public BankAccountEntity() {}
 

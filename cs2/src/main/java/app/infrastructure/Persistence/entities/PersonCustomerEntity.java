@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.infrastructure.Persistence.entities.PersonEntity;
-
 @Entity
 @Table(name = "person_customers")
 public class PersonCustomerEntity extends PersonEntity {
@@ -68,4 +66,34 @@ public class PersonCustomerEntity extends PersonEntity {
 
     public List<LoanEntity> getLoans() { return loans; }
     public void setLoans(List<LoanEntity> loans) { this.loans = loans; }
+
+    public void setFirstName(String firstName) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setFirstName'");
+    }
+
+    public void setLastName(String lastName) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setLastName'");
+    }
+
+    public void setEmail(String email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPhoneNumber'");
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setBirthDate'");
+    }
+
+    public void setAddress(String address) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAddress'");
+    }
 }
