@@ -8,7 +8,7 @@ import app.domain.model.enums.RoleSystem;
 
 public class UserBuilder {
 
-    private int iduser;
+    private String iduser;
     private int idrelation;
     private String fullname;
     private String ididenfication;
@@ -20,7 +20,7 @@ public class UserBuilder {
     private EstatUser estatUser;
     private String password;
 
-    public UserBuilder setIduser(int iduser) {
+    public UserBuilder setIduser(String iduser) {
         this.iduser = iduser;
         return this;
     }

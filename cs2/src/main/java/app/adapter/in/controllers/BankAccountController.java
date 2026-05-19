@@ -31,7 +31,7 @@ public class BankAccountController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<BankAccount> getBankAccountById(@PathVariable Long id) {
+    public ResponseEntity<BankAccount> getBankAccountById(@PathVariable String id) {
         try {
             Optional<BankAccount> account = bankAccountPort.findById(id);
             return account.map(ResponseEntity::ok)
@@ -54,7 +54,7 @@ public class BankAccountController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<BankAccount> updateBankAccount(@PathVariable Long id, @RequestBody BankAccount bankAccount) {
+    public ResponseEntity<BankAccount> updateBankAccount(@PathVariable String id, @RequestBody BankAccount bankAccount) {
         try {
             Optional<BankAccount> existingAccount = bankAccountPort.findById(id);
             if (existingAccount.isPresent()) {
@@ -70,7 +70,7 @@ public class BankAccountController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> deleteBankAccount(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBankAccount(@PathVariable String id) {
         try {
             Optional<BankAccount> account = bankAccountPort.findById(id);
             if (account.isPresent()) {
@@ -85,7 +85,7 @@ public class BankAccountController {
 
     @PostMapping("/{id}/deposit")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<BankAccount> deposit(@PathVariable Long id, @RequestParam Double amount) {
+    public ResponseEntity<BankAccount> deposit(@PathVariable String id, @RequestParam Double amount) {
         try {
             Optional<BankAccount> account = bankAccountPort.findById(id);
             if (account.isPresent()) {
@@ -102,7 +102,7 @@ public class BankAccountController {
 
     @PostMapping("/{id}/withdraw")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<BankAccount> withdraw(@PathVariable Long id, @RequestParam Double amount) {
+    public ResponseEntity<BankAccount> withdraw(@PathVariable String id, @RequestParam Double amount) {
         try {
             Optional<BankAccount> account = bankAccountPort.findById(id);
             if (account.isPresent()) {

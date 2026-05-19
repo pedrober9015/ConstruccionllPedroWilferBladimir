@@ -30,4 +30,6 @@ public interface LoanPort {
 
     // OBTENER TODOS LOS PRÉSTAMOS
     public List<Loan> findAll();
+
+ 
 }

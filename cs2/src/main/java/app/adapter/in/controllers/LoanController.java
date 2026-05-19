@@ -43,7 +43,7 @@ public class LoanController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
+    public ResponseEntity<Loan> getLoanById(@PathVariable String id) {
         try {
             Optional<Loan> loan = loanPort.findById(id);
             return loan.map(ResponseEntity::ok)
@@ -66,7 +66,7 @@ public class LoanController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<Loan> updateLoan(@PathVariable Long id, @RequestBody Loan loan) {
+    public ResponseEntity<Loan> updateLoan(@PathVariable String id, @RequestBody Loan loan) {
         try {
             Optional<Loan> existingLoan = loanPort.findById(id);
             if (existingLoan.isPresent()) {
@@ -82,7 +82,7 @@ public class LoanController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> deleteLoan(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
         try {
             Optional<Loan> loan = loanPort.findById(id);
             if (loan.isPresent()) {
@@ -119,7 +119,7 @@ public class LoanController {
 
     @PostMapping("/{id}/payment")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<Loan> makeLoanPayment(@PathVariable Long id, @RequestParam Double amount) {
+    public ResponseEntity<Loan> makeLoanPayment(@PathVariable String id, @RequestParam Double amount) {
         try {
             Optional<Loan> loan = loanPort.findById(id);
             if (loan.isPresent()) {

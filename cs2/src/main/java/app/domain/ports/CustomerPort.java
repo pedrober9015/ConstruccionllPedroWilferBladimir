@@ -29,4 +29,8 @@ public interface CustomerPort {
 
     // ELIMINAR CLIENTE POR ID
     public void delete(String id);
+
+    public Optional<Customer> findById(Long id);
+
+    public void delete(Long id);
 }

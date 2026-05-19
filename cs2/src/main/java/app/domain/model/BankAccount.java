@@ -94,7 +94,7 @@ public class BankAccount {
                 + ", balance=" + balance + " " + currency + ", status=" + status + "}";
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setId'");
     }

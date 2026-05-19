@@ -40,7 +40,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable String id) {
         try {
             Optional<Customer> customer = customerPort.findById(id);
             return customer.map(ResponseEntity::ok)
