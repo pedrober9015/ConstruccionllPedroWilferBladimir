@@ -4,7 +4,7 @@ import java.util.List;
 
 import app.domain.model.Customer;
 import app.domain.model.Loan;
-import app.domain.Services.LoanService;
+import app.domain.services.LoanService;
 
 public class LoanUseCases {
 
