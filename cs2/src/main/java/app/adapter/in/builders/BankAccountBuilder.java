@@ -1,4 +1,4 @@
-package app.adapter.in.bulders;
+package app.adapter.in.builders;
 
 import app.domain.model.BankAccount;
 import app.domain.model.Customer;
