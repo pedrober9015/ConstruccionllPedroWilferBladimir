@@ -1,7 +1,8 @@
-package app.domain.services;
+package app.domain.Services;
 
 import java.util.List;
 import java.util.Optional;
+
 import app.domain.model.CorporateCustomer;
 import app.domain.ports.CustomerPort;
 

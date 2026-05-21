@@ -2,9 +2,9 @@ package app.application.usecases;
 import java.time.LocalDate;
 import java.util.List;
 
+import app.domain.Services.LoanService;
 import app.domain.model.Customer;
 import app.domain.model.Loan;
-import app.domain.services.LoanService;
 
 public class LoanUseCases {
 

@@ -1,8 +1,9 @@
-package app.domain.services;
+package app.domain.Services;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
 import app.domain.model.Customer;
 import app.domain.model.Loan;
 import app.domain.ports.LoanPort;

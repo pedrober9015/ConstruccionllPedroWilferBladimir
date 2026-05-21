@@ -1,6 +1,7 @@
-package app.domain.services;
+package app.domain.Services;
 
 import java.util.List;
+
 import app.domain.model.Customer;
 import app.domain.model.Transfer;
 import app.domain.ports.TransferPort;

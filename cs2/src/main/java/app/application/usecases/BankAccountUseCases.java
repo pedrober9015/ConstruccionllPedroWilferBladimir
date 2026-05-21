@@ -2,9 +2,9 @@ package app.application.usecases;
 import java.util.List;
 import java.util.Optional;
 
+import app.domain.Services.BankAccountService;
 import app.domain.model.BankAccount;
 import app.domain.model.Customer;
-import app.domain.services.BankAccountService;
 
 public class BankAccountUseCases {
 
