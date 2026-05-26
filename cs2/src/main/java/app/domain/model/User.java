@@ -7,8 +7,8 @@ import app.domain.model.enums.RoleSystem;
 
 public class User {
 
-    private String iduser;
-    private int idrelation;
+    private Long iduser;
+    private Long idrelation;
     private String fullname;
     private String ididenfication;
     private String email;
@@ -24,7 +24,7 @@ public class User {
     }
 
     // Constructor completo
-    public User(String iduser, int idrelation, String fullname,
+    public User(Long iduser, Long idrelation, String fullname,
                 String ididenfication, String email, String telephone,
                 LocalDate datebirth, String direction,
                 RoleSystem rolsystem, EstatUser estatUser,
@@ -75,11 +75,11 @@ public class User {
 
     // Getters
 
-    public String getIduser() {
+    public Long getIduser() {
         return iduser;
     }
 
-    public int getIdrelation() {
+    public Long getIdrelation() {
         return idrelation;
     }
 
@@ -121,11 +121,11 @@ public class User {
 
     // Setters
 
-    public void setIduser(String iduser) {
+    public void setIduser(Long iduser) {
         this.iduser = iduser;
     }
 
-    public void setIdrelation(int idrelation) {
+    public void setIdrelation(Long idrelation) {
         this.idrelation = idrelation;
     }
 
