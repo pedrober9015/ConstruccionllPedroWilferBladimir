@@ -109,19 +109,4 @@ public class Loan {
                 + ", monthlyPayment=" + String.format("%.2f", monthlyPayment)
                 + ", remainingBalance=" + remainingBalance + ", status=" + status + "}";
     }
-
-    public Double getBalanceDue() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getBalanceDue'");
-    }
-
-    public void setBalanceDue(double d) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setBalanceDue'");
-    }
-
-    public void setLoanId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setLoanId'");
-    }
 }

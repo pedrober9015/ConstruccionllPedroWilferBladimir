@@ -1,7 +1,7 @@
-package app.infrastructure.Persistence.mapper;
+package app.infrastructure.persistence.mapper;
 
 import app.domain.model.Bitacora;
-import app.infrastructure.Persistence.entities.BitacoraEntity;
+import app.infrastructure.persistence.entities.BitacoraEntity;
 
 import java.util.ArrayList;
 import java.util.List;

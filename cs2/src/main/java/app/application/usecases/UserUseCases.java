@@ -1,7 +1,7 @@
 package app.application.usecases;
 import java.util.List;
 
-import app.domain.Services.UserService;
+import app.domain.services.UserService;
 import app.domain.model.User;
 
 public class UserUseCases {

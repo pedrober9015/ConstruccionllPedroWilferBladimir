@@ -1,7 +1,7 @@
-package app.infrastructure.Persistence.mapper;
+package app.infrastructure.persistence.mapper;
 
 import app.domain.model.PersonCustomer;
-import app.infrastructure.Persistence.entities.PersonCustomerEntity;
+import app.infrastructure.persistence.entities.PersonCustomerEntity;
 
 import java.util.ArrayList;
 import java.util.List;

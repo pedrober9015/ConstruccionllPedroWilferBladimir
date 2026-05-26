@@ -1,8 +1,7 @@
-package app.infrastructure.Persistence.mapper;
+package app.infrastructure.persistence.mapper;
 
 import app.domain.model.Loan;
-import app.infrastructure.Persistence.entities.LoanEntity;
-
+import app.infrastructure.persistence.entities.LoanEntity;
 import java.util.ArrayList;
 import java.util.List;
 

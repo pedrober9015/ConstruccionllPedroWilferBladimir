@@ -1,7 +1,7 @@
-package app.infrastructure.Persistence.mapper;
+package app.infrastructure.persistence.mapper;
 
 import app.domain.model.Product;
-import app.infrastructure.Persistence.entities.ProductEntity;
+import app.infrastructure.persistence.entities.ProductEntity;
 
 import java.util.ArrayList;
 import java.util.List;

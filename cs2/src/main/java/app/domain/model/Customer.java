@@ -59,9 +59,4 @@ public abstract class Customer extends Person {
         return "Customer{customerCode='" + customerCode + "', type='" + getCustomerType()
                 + "', active=" + active + "}";
     }
-
-    public void setId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
-    }
 }

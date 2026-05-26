@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence.entities;
+package app.infrastructure.persistence.entities;
 
 import app.domain.model.enums.EstatUser;
 import app.domain.model.enums.RoleSystem;
@@ -10,75 +10,142 @@ import java.time.LocalDate;
 @Table(name = "users")
 public class UserEntity {
 
+    // ID DEL USUARIO
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    private String  iduser;
+    private Long idUser;
 
+    // ID RELACIONADO CON OTRA ENTIDAD
     @Column(name = "id_relation")
-    private int idrelation;
+    private Long idRelation;
 
+    // NOMBRE COMPLETO
     @Column(name = "fullname", nullable = false, length = 200)
-    private String fullname;
+    private String fullName;
 
+    // DOCUMENTO DE IDENTIFICACION
     @Column(name = "id_identification", unique = true, length = 30)
-    private String ididenfication;
+    private String identification;
 
+    // CORREO ELECTRONICO
     @Column(name = "email", nullable = false, unique = true, length = 150)
     private String email;
 
+    // TELEFONO
     @Column(name = "telephone", length = 20)
     private String telephone;
 
+    // FECHA DE NACIMIENTO
     @Column(name = "date_birth")
-    private LocalDate datebirth;
+    private LocalDate dateBirth;
 
+    // DIRECCION
     @Column(name = "direction", length = 255)
     private String direction;
 
+    // ROL DEL SISTEMA
     @Enumerated(EnumType.STRING)
     @Column(name = "rol_system", nullable = false, length = 30)
-    private RoleSystem rolsystem;
+    private RoleSystem roleSystem;
 
+    // ESTADO DEL USUARIO
     @Enumerated(EnumType.STRING)
     @Column(name = "estat_user", nullable = false, length = 20)
     private EstatUser estatUser;
 
+    // CONTRASEÑA
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
-    public UserEntity() {}
+    public UserEntity() {
+    }
 
-    public  String getIduser() { return iduser; }
-    public void setIduser(String iduser) { this.iduser = iduser; }
+    public Long getIdUser() {
+        return idUser;
+    }
 
-    public int getIdrelation() { return idrelation; }
-    public void setIdrelation(int idrelation) { this.idrelation = idrelation; }
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
 
-    public String getFullname() { return fullname; }
-    public void setFullname(String fullname) { this.fullname = fullname; }
+    public Long getIdRelation() {
+        return idRelation;
+    }
 
-    public String getIdidenfication() { return ididenfication; }
-    public void setIdidenfication(String ididenfication) { this.ididenfication = ididenfication; }
+    public void setIdRelation(Long idRelation) {
+        this.idRelation = idRelation;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getFullName() {
+        return fullName;
+    }
 
-    public String getTelephone() { return telephone; }
-    public void setTelephone(String telephone) { this.telephone = telephone; }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-    public LocalDate getDatebirth() { return datebirth; }
-    public void setDatebirth(LocalDate datebirth) { this.datebirth = datebirth; }
+    public String getIdentification() {
+        return identification;
+    }
 
-    public String getDirection() { return direction; }
-    public void setDirection(String direction) { this.direction = direction; }
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
 
-    public RoleSystem getRolsystem() { return rolsystem; }
-    public void setRolsystem(RoleSystem rolsystem) { this.rolsystem = rolsystem; }
+    public String getEmail() {
+        return email;
+    }
 
-    public EstatUser getEstatUser() { return estatUser; }
-    public void setEstatUser(EstatUser estatUser) { this.estatUser = estatUser; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public LocalDate getDateBirth() {
+        return dateBirth;
+    }
+
+    public void setDateBirth(LocalDate dateBirth) {
+        this.dateBirth = dateBirth;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public RoleSystem getRoleSystem() {
+        return roleSystem;
+    }
+
+    public void setRoleSystem(RoleSystem roleSystem) {
+        this.roleSystem = roleSystem;
+    }
+
+    public EstatUser getEstatUser() {
+        return estatUser;
+    }
+
+    public void setEstatUser(EstatUser estatUser) {
+        this.estatUser = estatUser;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

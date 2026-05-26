@@ -1,4 +1,4 @@
-package app.infrastructure.security;
+package app;
 
 import java.util.Properties;
 

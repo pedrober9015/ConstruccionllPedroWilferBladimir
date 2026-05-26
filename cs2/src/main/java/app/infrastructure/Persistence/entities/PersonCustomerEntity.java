@@ -1,99 +1,98 @@
-package app.infrastructure.Persistence.entities;
+package app.infrastructure.persistence.entities;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "person_customers")
 public class PersonCustomerEntity extends PersonEntity {
 
+    // ID PRINCIPAL DEL CLIENTE
     @Id
     @Column(name = "id", length = 50)
     private String id;
 
+    // CODIGO INTERNO DEL CLIENTE
     @Column(name = "customer_code", nullable = false, unique = true, length = 50)
     private String customerCode;
 
+    // FECHA DE REGISTRO
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
+    // ESTADO DEL CLIENTE
     @Column(name = "active", nullable = false)
     private boolean active;
 
+    // DOCUMENTO NACIONAL
     @Column(name = "national_id", unique = true, length = 20)
     private String nationalId;
 
+    // OCUPACION
     @Column(name = "occupation", length = 100)
     private String occupation;
 
+    // INGRESOS MENSUALES
     @Column(name = "monthly_income")
     private double monthlyIncome;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<BankAccountEntity> accounts = new ArrayList<>();
-
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<LoanEntity> loans = new ArrayList<>();
-
-    public PersonCustomerEntity() {}
-
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-
-    public String getCustomerCode() { return customerCode; }
-    public void setCustomerCode(String customerCode) { this.customerCode = customerCode; }
-
-    public LocalDate getRegistrationDate() { return registrationDate; }
-    public void setRegistrationDate(LocalDate registrationDate) { this.registrationDate = registrationDate; }
-
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
-
-    public String getNationalId() { return nationalId; }
-    public void setNationalId(String nationalId) { this.nationalId = nationalId; }
-
-    public String getOccupation() { return occupation; }
-    public void setOccupation(String occupation) { this.occupation = occupation; }
-
-    public double getMonthlyIncome() { return monthlyIncome; }
-    public void setMonthlyIncome(double monthlyIncome) { this.monthlyIncome = monthlyIncome; }
-
-    public List<BankAccountEntity> getAccounts() { return accounts; }
-    public void setAccounts(List<BankAccountEntity> accounts) { this.accounts = accounts; }
-
-    public List<LoanEntity> getLoans() { return loans; }
-    public void setLoans(List<LoanEntity> loans) { this.loans = loans; }
-
-    public void setFirstName(String firstName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setFirstName'");
+    public PersonCustomerEntity() {
     }
 
-    public void setLastName(String lastName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setLastName'");
+    public String getId() {
+        return id;
     }
 
-    public void setEmail(String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPhoneNumber'");
+    public String getCustomerCode() {
+        return customerCode;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setBirthDate'");
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
     }
 
-    public void setAddress(String address) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAddress'");
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getNationalId() {
+        return nationalId;
+    }
+
+    public void setNationalId(String nationalId) {
+        this.nationalId = nationalId;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public double getMonthlyIncome() {
+        return monthlyIncome;
+    }
+
+    public void setMonthlyIncome(double monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
     }
 }

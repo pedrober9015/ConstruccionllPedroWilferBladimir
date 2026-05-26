@@ -1,9 +1,8 @@
-package app.infrastructure.Persistence.mapper;
+package app.infrastructure.persistence.mapper;
 
 import app.domain.model.BankAccount;
-import app.infrastructure.Persistence.entities.BankAccountEntity;
-import app.infrastructure.Persistence.entities.TransferEntity;
-
+import app.infrastructure.persistence.entities.BankAccountEntity;
+import app.infrastructure.persistence.entities.TransferEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
  *
  *   - {@link #toDomain(BankAccountEntity)}         → incluye la resolución del owner
  *                                                     (el repositorio debe inyectarlo después)
- *   - {@link #toDomainWithoutOwner1(BankAccountEntity)} → usado internamente desde CustomerEntityMapper
+ *   - {@link #toDomainWithoutOwner1(BankAccountEntity)} → usadointernamente desde CustomerEntityMapper
  * - {@link #toDomainWithoutAccounts(t)}
  */
 public class BankAccountEntityMapper {

@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence.entities;
+package app.infrastructure.persistence.entities;
 
 import app.domain.model.enums.LoanStatus;
 import jakarta.persistence.*;
@@ -9,104 +9,165 @@ import java.time.LocalDate;
 @Table(name = "loans")
 public class LoanEntity {
 
+    // ID DEL PRESTAMO
     @Id
     @Column(name = "loan_id", length = 36)
     private String loanId;
 
-    /**
-     * Relación polimórfica hacia el cliente: puede ser PersonCustomer o CorporateCustomer.
-     * Se almacena como customerCode + discriminador de tipo para resolver en el repositorio.
-     */
+    // CODIGO DEL CLIENTE
     @Column(name = "customer_code", nullable = false, length = 50)
     private String customerCode;
 
+    // TIPO DE CLIENTE
+    // PERSON o CORPORATE
     @Column(name = "customer_type", nullable = false, length = 20)
-    private String customerType;           // "NATURAL_PERSON" | "CORPORATE"
+    private String customerType;
 
+    // MONTO PRINCIPAL DEL PRESTAMO
     @Column(name = "principal", nullable = false)
     private double principal;
 
+    // TASA DE INTERES
     @Column(name = "interest_rate", nullable = false)
     private double interestRate;
 
+    // PLAZO EN MESES
     @Column(name = "term_months", nullable = false)
     private int termMonths;
 
+    // PAGO MENSUAL
     @Column(name = "monthly_payment")
     private double monthlyPayment;
 
+    // SALDO RESTANTE
     @Column(name = "remaining_balance")
     private double remainingBalance;
 
+    // ESTADO DEL PRESTAMO
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
     private LoanStatus status;
 
+    // FECHA DE INICIO
     @Column(name = "start_date")
     private LocalDate startDate;
 
+    // FECHA FINAL
     @Column(name = "end_date")
     private LocalDate endDate;
 
+    // FECHA DEL PROXIMO PAGO
     @Column(name = "next_payment_date")
     private LocalDate nextPaymentDate;
 
+    // MOTIVO DEL PRESTAMO
     @Column(name = "purpose", length = 255)
     private String purpose;
 
-    // Relación JPA inversa (usada desde PersonCustomerEntity / CorporateCustomerEntity)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_customer_id", insertable = false, updatable = false)
-    private PersonCustomerEntity personCustomer;
+    public LoanEntity() {
+    }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "corporate_customer_id", insertable = false, updatable = false)
-    private CorporateCustomerEntity corporateCustomer;
+    public String getLoanId() {
+        return loanId;
+    }
 
-    public LoanEntity() {}
+    public void setLoanId(String loanId) {
+        this.loanId = loanId;
+    }
 
-    public String getLoanId() { return loanId; }
-    public void setLoanId(String loanId) { this.loanId = loanId; }
+    public String getCustomerCode() {
+        return customerCode;
+    }
 
-    public String getCustomerCode() { return customerCode; }
-    public void setCustomerCode(String customerCode) { this.customerCode = customerCode; }
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
+    }
 
-    public String getCustomerType() { return customerType; }
-    public void setCustomerType(String customerType) { this.customerType = customerType; }
+    public String getCustomerType() {
+        return customerType;
+    }
 
-    public double getPrincipal() { return principal; }
-    public void setPrincipal(double principal) { this.principal = principal; }
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
+    }
 
-    public double getInterestRate() { return interestRate; }
-    public void setInterestRate(double interestRate) { this.interestRate = interestRate; }
+    public double getPrincipal() {
+        return principal;
+    }
 
-    public int getTermMonths() { return termMonths; }
-    public void setTermMonths(int termMonths) { this.termMonths = termMonths; }
+    public void setPrincipal(double principal) {
+        this.principal = principal;
+    }
 
-    public double getMonthlyPayment() { return monthlyPayment; }
-    public void setMonthlyPayment(double monthlyPayment) { this.monthlyPayment = monthlyPayment; }
+    public double getInterestRate() {
+        return interestRate;
+    }
 
-    public double getRemainingBalance() { return remainingBalance; }
-    public void setRemainingBalance(double remainingBalance) { this.remainingBalance = remainingBalance; }
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
 
-    public LoanStatus getStatus() { return status; }
-    public void setStatus(LoanStatus status) { this.status = status; }
+    public int getTermMonths() {
+        return termMonths;
+    }
 
-    public LocalDate getStartDate() { return startDate; }
-    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+    public void setTermMonths(int termMonths) {
+        this.termMonths = termMonths;
+    }
 
-    public LocalDate getEndDate() { return endDate; }
-    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
+    public double getMonthlyPayment() {
+        return monthlyPayment;
+    }
 
-    public LocalDate getNextPaymentDate() { return nextPaymentDate; }
-    public void setNextPaymentDate(LocalDate nextPaymentDate) { this.nextPaymentDate = nextPaymentDate; }
+    public void setMonthlyPayment(double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
+    }
 
-    public String getPurpose() { return purpose; }
-    public void setPurpose(String purpose) { this.purpose = purpose; }
+    public double getRemainingBalance() {
+        return remainingBalance;
+    }
 
-    public PersonCustomerEntity getPersonCustomer() { return personCustomer; }
-    public void setPersonCustomer(PersonCustomerEntity personCustomer) { this.personCustomer = personCustomer; }
+    public void setRemainingBalance(double remainingBalance) {
+        this.remainingBalance = remainingBalance;
+    }
 
-    public CorporateCustomerEntity getCorporateCustomer() { return corporateCustomer; }
-    public void setCorporateCustomer(CorporateCustomerEntity corporateCustomer) { this.corporateCustomer = corporateCustomer; }
+    public LoanStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(LoanStatus status) {
+        this.status = status;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalDate getNextPaymentDate() {
+        return nextPaymentDate;
+    }
+
+    public void setNextPaymentDate(LocalDate nextPaymentDate) {
+        this.nextPaymentDate = nextPaymentDate;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
 }

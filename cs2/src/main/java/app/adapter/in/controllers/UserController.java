@@ -4,61 +4,111 @@ import app.domain.model.User;
 import app.domain.model.enums.EstatUser;
 import app.domain.model.enums.RoleSystem;
 
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/users")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*", maxAge = 3600)
+
 public class UserController {
-       private User user;
 
-    // Constructor
-    public UserController(User user) {
-        this.user = user;
-    }
-
-    // Login controller
-    public void loginUser(String email, String password) {
-
-        boolean success = user.Login(email, password);
-
-        if (success) {
-            System.out.println("Login successful.");
-            System.out.println("Welcome user with role: " + user.getRolesystem());
-        } else {
-            System.out.println("Invalid credentials or inactive user.");
+    private final User user;
+    
+    // Login
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(
+            @RequestParam String email,
+            @RequestParam String password) {
+        try {
+            boolean success = user.login(email, password);
+            if (success) {
+                return ResponseEntity.ok(
+                        "Login successful. Welcome user with role: "
+                                + user.getRolesystem());
+            }
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body("Invalid credentials or inactive user.");
+        } catch (Exception e) {
+            return ResponseEntity.status(
+                    HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error during login.");
         }
     }
+    // Logout
+    @PostMapping("/logout")
+    public ResponseEntity<String> logoutUser() {
 
-    // Logout controller
-    public void logoutUser() {
-        user.Logout();
+        try {
+            user.logout();
+            return ResponseEntity.ok(
+                    "User logged out successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(
+                    HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error during logout.");
+        }
     }
-
     // Update user information
-    public void updateUserInformation(String telephone, String direction) {
-
-        user.updateData(telephone, direction);
-
-        System.out.println("User information updated successfully.");
+    @PutMapping("/update-info")
+    public ResponseEntity<String> updateUserInformation(
+            @RequestParam String telephone,
+            @RequestParam String direction) {
+        try {
+            user.updateData(telephone, direction);
+            return ResponseEntity.ok(
+                    "User information updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(
+                    HttpStatus.BAD_REQUEST)
+                    .body("Error updating user information.");
+        }
     }
-
     // Change user status
-    public void updateUserStatus(EstatUser newStatus) {
-
-        user.changeEstatus(newStatus);
-
-        System.out.println("User status updated to: " + newStatus);
+    @PutMapping("/status")
+    public ResponseEntity<String> updateUserStatus(
+            @RequestParam EstatUser newStatus) {
+        try {
+            user.changeEstatus(newStatus);
+            return ResponseEntity.ok(
+                    "User status updated to: " + newStatus);
+        } catch (Exception e) {
+            return ResponseEntity.status(
+                    HttpStatus.BAD_REQUEST)
+                    .body("Error updating user status.");
+        }
     }
-
     // Change user role
-    public void updateUserRole(RoleSystem newRole) {
-
-        user.changeRole(newRole);
-
-        System.out.println("User role updated to: " + newRole);
+    @PutMapping("/role")
+    public ResponseEntity<String> updateUserRole(
+            @RequestParam RoleSystem newRole) {
+        try {
+            user.changeRole(newRole);
+            return ResponseEntity.ok(
+                    "User role updated to: " + newRole);
+        } catch (Exception e) {
+            return ResponseEntity.status(
+                    HttpStatus.BAD_REQUEST)
+                    .body("Error updating user role.");
+        }
     }
-
-    // Display user information
-    public void showUserInformation() {
-
-        System.out.println("===== USER INFORMATION =====");
-        System.out.println("Role: " + user.getRolesystem());
-        System.out.println("Status: " + user.getEstatUser());
+    // Show user information
+    @GetMapping("/info")
+    public ResponseEntity<String> showUserInformation() {
+        try {
+            String info =
+                    "===== USER INFORMATION =====\n"
+                            + "Role: " + user.getRolesystem() + "\n"
+                            + "Status: " + user.getEstatUser();
+            return ResponseEntity.ok(info);
+        } catch (Exception e) {
+            return ResponseEntity.status(
+                    HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error retrieving user information.");
+        }
     }
 }

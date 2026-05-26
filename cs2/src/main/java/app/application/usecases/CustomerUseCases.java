@@ -3,7 +3,7 @@ import java.util.List;
 import app.domain.model.BankAccount;
 import app.domain.model.Customer;
 import app.domain.model.Loan;
-import app.domain.Services.CustomerService;
+import app.domain.services.CustomerService;
 
 public class CustomerUseCases {
 

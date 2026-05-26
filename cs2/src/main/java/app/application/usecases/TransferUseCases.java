@@ -1,7 +1,7 @@
 package app.application.usecases;
 import java.util.List;
 
-import app.domain.Services.TransferService;
+import app.domain.services.TransferService;
 import app.domain.model.Customer;
 import app.domain.model.Transfer;
 
