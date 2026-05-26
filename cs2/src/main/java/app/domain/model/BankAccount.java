@@ -16,7 +16,7 @@ public class BankAccount {
     private double balance;
     private double availableBalance;
     private String currency;
-    private LocalDateTime openingDate;
+    private LocalDateTime openingDate;                                          
     private LocalDateTime lastTransactionDate;
     private Customer owner;
     private List<Transfer> transfers;
